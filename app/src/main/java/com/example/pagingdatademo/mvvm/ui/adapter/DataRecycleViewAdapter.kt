@@ -19,7 +19,9 @@ import com.example.pagingdatademo.http.reqdata.DemoReqData
  * @date 2020/11/7
  * @desc
  */
-class DataRecycleViewAdapter :
+class DataRecycleViewAdapter(
+    val itemUpdate: (Int, DemoReqData.DataBean.DatasBean?,DataRecycleViewAdapter) -> Unit
+) :
     PagingDataAdapter<DemoReqData.DataBean.DatasBean, RecyclerView.ViewHolder>(object :
         DiffUtil.ItemCallback<DemoReqData.DataBean.DatasBean>() {
 
@@ -39,9 +41,11 @@ class DataRecycleViewAdapter :
         }
     }) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var dataBean = getItem(position)
-        Log.d("砂蜜豆玛寺庙的撒","[---------")
+        val dataBean = getItem(position)
         (holder as DataViewHolder).binding.demoReaData = dataBean
+        holder.binding.btnUpdate.setOnClickListener {
+            itemUpdate(position, dataBean,this)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

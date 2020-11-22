@@ -9,11 +9,11 @@
     </data>
 
     <LinearLayout
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -28,12 +28,27 @@
             android:text="@{demoReaData.title}"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改数据" />
+
         <View
-            android:background="#fff000"
             android:layout_width="match_parent"
-            android:layout_height="1dp">
+            android:layout_height="1dp"
+            android:background="#fff000">
 
         </View>
+
+
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除数据" />
 
 
     </LinearLayout>

@@ -28,7 +28,11 @@ import java.net.ConnectException
 class MainActivity : AppCompatActivity() {
 
     var TAG = "MainActivity"
-    private var dataRecycleViewAdapter = DataRecycleViewAdapter()
+    private var dataRecycleViewAdapter = DataRecycleViewAdapter { position, it, adapter ->
+        it?.author = "黄林晴${position}"
+        adapter.notifyDataSetChanged()
+    }
+
 
     lateinit var mPagingData: PagingData<DemoReqData.DataBean.DatasBean>
 
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                         mPagingData = it
                         dataRecycleViewAdapter.submitData(it)
                     }
+
                 } catch (e: Exception) {
                     Log.d("测试错误数据 view层", "---错误了怎么办呢")
                 }
@@ -58,8 +63,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btn_update.setOnClickListener {
-        }
+
         //初始状态添加监听
         dataRecycleViewAdapter.addLoadStateListener {
             when (it.refresh) {

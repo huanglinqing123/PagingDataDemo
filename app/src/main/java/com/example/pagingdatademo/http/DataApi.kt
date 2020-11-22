@@ -2,9 +2,7 @@ package com.example.paging3demo.http
 
 import com.example.pagingdatademo.http.reqdata.DemoReqData
 import retrofit2.http.GET
-import retrofit2.http.HTTP
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 /**
  * @author huanglinqing
